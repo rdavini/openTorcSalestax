@@ -1,0 +1,81 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type='text/javascript'>
+    var number_inputs = 1
+    function btnclicked(){
+      var desc_label= $("<label>", {
+        text: "Desc"
+      })
+      var desc_input = $("<input>", {
+        type: "text",
+        name: "desc" + number_inputs
+      });
+      var qty_label= $("<label>", {
+        text: "Qty"
+      })
+      var qty_input = $("<input>", {
+        type: "number",
+        name: "qty" + number_inputs,
+        step: 1,
+        min: 1
+      });
+      var price_label= $("<label>", {
+        text: "Price"
+      })
+      var price_input = $("<input>", {
+        type: "number",
+        name: "price" + number_inputs,
+        step: 0.01,
+        min: 0.01
+      });
+
+      $("#new_inputs").append(desc_label);
+      $("#new_inputs").append(desc_input);
+      $("#new_inputs").append("<br/><br/>");
+
+      $("#new_inputs").append(qty_label);
+      $("#new_inputs").append(qty_input);
+      $("#new_inputs").append("<br/><br/>");
+
+       $("#new_inputs").append(price_label);
+      $("#new_inputs").append(price_input);
+      $("#new_inputs").append("<br/><br/><br/>");
+
+      number_inputs ++
+    }
+</script>
+
+<%= tag.ul do %>
+  <% @items.each do |item| %> 
+    <%= tag.li do %>
+      <%= item.qty %> <%= item.desc %>: <%= item.total_price %>
+    <% end %>
+  <% end %>
+
+  <%= tag.li do %>
+    Sales Taxes: <%= @salex_taxes %>
+  <% end %>
+
+  <%= tag.li do %>
+    Total: <%= @total %>
+  <% end %>
+<% end %>
+
+<button onclick="btnclicked()">+</button>
+
+<%= form_tag(items_path, id: 'items_form') do %>
+  <%= tag.p do %>
+    <%= label_tag("text", "Desc") %>
+    <%= text_field_tag("desc0") %>
+  <% end %>
+  <%= tag.p do %>
+    <%= label_tag("number", "Qty") %>
+    <%= number_field_tag("qty0", nil, step: 1, min: 1) %>
+  <% end %>
+   <%= tag.p do %>
+    <%= label_tag("number", "Price") %>
+    <%= number_field_tag("price0", nil, step: 0.01, min: 0.01) %>
+  <% end %>
+  <div id='new_inputs'>
+  </div>
+  <%= button_tag("Submit item") %>
+<% end %>
