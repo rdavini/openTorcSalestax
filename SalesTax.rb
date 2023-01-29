@@ -1,18 +1,12 @@
-# mirth-final.rb
-# Replace code with Rails library
-
 require 'rack'
 require 'rack/handler/puma'
 
-# Add the Rails libraries we need
 require 'action_controller'
 require 'active_record'
 require 'action_dispatch'
 
-# Create a connection between AR and the database
 ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "sales_tax.sqlite3")
 
-# Create a AR model for the items
 class Item < ActiveRecord::Base;
   after_validation :calculateTax
 
@@ -49,14 +43,9 @@ class Item < ActiveRecord::Base;
   end
 end
 
-# Ensure the Action Controller reads views from root
 ActionController::Base.prepend_view_path(".")
 
-# Create a router to manage endpoints
 router = ActionDispatch::Routing::RouteSet.new
-
-# Create a controller for items 
-# Each action represents an endpoint
 
 class ItemsController < ActionController::Base
   def index
@@ -98,17 +87,12 @@ class ItemsController < ActionController::Base
     end
 end
 
-# Create router to manage endpoints 
 router = ActionDispatch::Routing::RouteSet.new
 
-# Include url helpers module to use `items_path`
 ItemsController.include(router.url_helpers)
 
 router.draw do
-  # Creates standardised CRUD routes mapped to the controller
   resources :items
-
-  # Routes all paths to `birthdays#all_paths` action method
   match '*path', via: :all, to: 'items#all_paths'
 end 
 
