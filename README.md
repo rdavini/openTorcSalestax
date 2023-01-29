@@ -1,5 +1,7 @@
 # openTorcSalestax
 
+#ruby 3.1.2p20
+
 
 # My application was running fine, but I tried to implement testing with rspec and something broke the application
 # I pasted around 20 min after the 4 hour limit because I was trying to fix the branch, but its possible to access the master branch and run 'git log' this was the working commit before I started working on the rspec:  5e2882808a8d9d81cc189c0a6bd04759f912db7e
