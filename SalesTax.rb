@@ -7,7 +7,7 @@ require 'action_dispatch'
 
 ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: "sales_tax.sqlite3")
 
-class Item < ActiveRecord::Base;
+class Item < ActiveRecord::Base
   after_validation :calculateTax
 
   validates :desc, presence: true, length: { minimum: 3 }, format: { with: /\A[a-zA-Z ]+\z/, message: "only allows letters" }
