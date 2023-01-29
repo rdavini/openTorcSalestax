@@ -2,10 +2,9 @@
 
 
 # My application was running fine, but I tried to implement testing with rspec and something broke the application
-# please dont use branch master
 # I pasted around 20 min after the 4 hour limit because I was trying to fix the branch, but its possible to access the master branch and run 'git log' this was the working commit before I started working on the rspec:  5e2882808a8d9d81cc189c0a6bd04759f912db7e
 # I finished my code in around 3 hours, my problem was configuring the rspec. It's possible to check the time I pushed this code through git log
-# Please run the application using master branch commit 5e2882808a8d9d81cc189c0a6bd04759f912db7e or use the working_branch
+# Please run the application using master branch commit 5e2882808a8d9d81cc189c0a6bd04759f912db7e. Just run git checkout 5e2882808a8d9d81cc189c0a6bd04759f912db7e  or use the working_branch
 
 
 
